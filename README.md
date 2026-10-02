@@ -42,6 +42,18 @@ Tasks live in `js/exercises.js`. Copy an existing entry and edit it:
 - `flow` describes the flowchart using the helpers at the top of the file: `io()`, `proc()`, `IF(cond, then, else)`, `WHILE(cond, body)`, `FOR(text, body)` and `REPEAT(body, cond)`. The chart is laid out and drawn automatically.
 - `code` lists the pseudocode lines in the correct order. Indent with two spaces per level. Lines with identical text are treated as interchangeable.
 
+## Worked answers page
+
+`revision.html` goes through the programming practice questions (9 questions, 24 marks) with worked answers. For each part, students:
+
+- write their own answer first (saved in the browser)
+- press **Show answer** to see the model answer, in SQA Reference Language or Python (toggle at the top)
+- tick the mark points they earned. A running total shows in the header.
+- read **Why?** (the explanation) and **Watch out** (common mistakes)
+- use **Try it** to experiment: e.g. trace the till loop step by step, run the Luna Life code with different purposes, or enter passwords into the validation loop
+
+Questions and answers live in `js/questions.js`; the Try it activities are in `js/revision.js`.
+
 ## Files
 
 - `index.html`: page structure
@@ -49,3 +61,4 @@ Tasks live in `js/exercises.js`. Copy an existing entry and edit it:
 - `js/flowchart.js`: draws flowcharts as SVG
 - `js/exercises.js`: task data
 - `js/app.js`: shuffling, drag and drop, checking and hints
+- `revision.html`, `css/revision.css`, `js/questions.js`, `js/revision.js`: worked answers page
