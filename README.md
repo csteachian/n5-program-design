@@ -4,7 +4,9 @@ A practice website for National 5 Software Design and Development. Each task sho
 
 ## Using it
 
-Open `index.html` in a browser. No server, build step or install is needed. To share it with a class, host the folder anywhere that serves static files, for example GitHub Pages (Settings → Pages → deploy from the `main` branch).
+Open `index.html` in a browser. No server, build step or install is needed.
+
+To publish it as a website with GitHub Pages: in the repository go to **Settings → Pages**, set **Source** to *Deploy from a branch*, pick the branch and the `/ (root)` folder, then **Save**. After a minute or two the site is live at `https://csteachian.github.io/n5-program-design/`.
 
 Students can:
 
