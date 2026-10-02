@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>N5 Flowchart Sorter</title>
+  <meta name="description" content="National 5 Software Design and Development practice: read a flowchart and put the matching pseudocode in the correct order.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=JetBrains+Mono:wght@400;600&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="brand">
+        <span class="brand-tag">National 5 · Software Design &amp; Development</span>
+        <h1>Flowchart Sorter</h1>
+      </div>
+      <div class="progress" aria-live="polite">
+        <span class="progress-count" id="progress-count">0 / 0</span>
+        <span class="progress-label">tasks complete</span>
+        <div class="progress-bar" aria-hidden="true"><span id="progress-fill"></span></div>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <nav class="tasks" aria-label="Tasks">
+      <details id="task-menu" open>
+        <summary>Tasks</summary>
+        <ol class="task-list" id="task-list"></ol>
+      </details>
+      <details class="key">
+        <summary>Flowchart symbols</summary>
+        <dl class="key-list" id="key-list"></dl>
+      </details>
+    </nav>
+
+    <main class="workspace" id="workspace">
+      <section class="brief">
+        <div class="brief-meta">
+          <span class="chip" id="topic"></span>
+          <span class="level" id="level"></span>
+        </div>
+        <h2 id="title"></h2>
+        <p id="brief"></p>
+      </section>
+
+      <div class="panes">
+        <section class="pane pane-chart" aria-labelledby="chart-heading">
+          <header class="pane-head">
+            <h3 id="chart-heading">Flowchart</h3>
+          </header>
+          <div class="chart-scroll" id="chart"></div>
+        </section>
+
+        <section class="pane pane-code" aria-labelledby="code-heading">
+          <header class="pane-head">
+            <h3 id="code-heading">Pseudocode</h3>
+            <label class="toggle" for="indent-toggle">
+              <input type="checkbox" id="indent-toggle">
+              <span>Show indentation</span>
+            </label>
+          </header>
+          <p class="instructions" id="instructions">Drag the lines into the correct order using the grip on the left. You can also use the arrow buttons, or select a line and press Alt + ↑ / ↓.</p>
+          <ol class="code-list" id="code-list"></ol>
+
+          <div class="actions">
+            <button type="button" class="btn btn-primary" id="check-btn">Check my order</button>
+            <button type="button" class="btn" id="hint-btn">Hint</button>
+            <button type="button" class="btn" id="shuffle-btn">Shuffle</button>
+            <button type="button" class="btn btn-quiet" id="reveal-btn">Show answer</button>
+          </div>
+          <div class="feedback" id="feedback" role="status" aria-live="polite"></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <footer class="foot">
+    Pseudocode is written in SQA Reference Language. Progress is saved in this browser only.
+  </footer>
+
+  <script src="js/flowchart.js"></script>
+  <script src="js/exercises.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
