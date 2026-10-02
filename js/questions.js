@@ -30,13 +30,13 @@
           py: ['screenTime = round(screenTime, 2)']
         },
         markPoints: [
-          'Uses the <strong>round</strong> function on <code>screenTime</code>',
-          'Rounds to <strong>2</strong> places <em>and</em> stores the result (assigns it to a variable)'
+          'Uses the <strong>round</strong> function, with brackets',
+          'Correct parameters: <code>screenTime</code> <em>and</em> <strong>2</strong>'
         ],
         why: `<p><code>ROUND</code> is a <strong>predefined function</strong>: a piece of code that is already built into the language. You give it two things (its <em>parameters</em>): the value to round and how many decimal places you want.</p>
-          <p>The question says <em>store</em>, so the rounded value has to be put back into a variable with <code>SET … TO</code> (or <code>=</code> in Python). Storing it back in <code>screenTime</code> is the neatest choice, but a new variable such as <code>roundedTime</code> is fine too.</p>`,
+          <p>The marks are for the function and its two parameters, so <code>ROUND(screenTime, 2)</code> is the key part. The question says <em>store</em>, though, so write a complete line that puts the result into a variable with <code>SET … TO</code> (or <code>=</code> in Python).</p>`,
         watch: [
-          '<code>SEND ROUND(screenTime, 2) TO DISPLAY</code> only <em>displays</em> the rounded value. Nothing is stored, so the second mark is lost.',
+          'Leaving out the brackets, or a parameter: <code>ROUND screenTime</code> or <code>ROUND(screenTime)</code> does not say how many decimal places.',
           'Putting the parameters the wrong way round, e.g. <code>ROUND(2, screenTime)</code>.',
           'Using <code>INT</code> / <code>int()</code>: that chops off <em>all</em> the decimal places instead of rounding to two.'
         ],
@@ -198,15 +198,15 @@
             py: ['import random', '', 'seatNum = random.randint(1, 50)']
           },
           markPoints: [
-            'Uses the <strong>random</strong> function and stores the result in <code>seatNum</code>',
-            'Correct range: <strong>1</strong> to <strong>50</strong>'
+            '<strong>Assigns</strong> the value to <code>seatNum</code>',
+            'A <strong>random</strong> function that generates <strong>50</strong> values (e.g. 1 to 50)'
           ],
           why: `<p><code>RANDOM(1, 50)</code> picks a random <strong>integer</strong> from 1 up to and including 50. Those are exactly the seat numbers on the bus.</p>
             <p>In Python, <code>random.randint(1, 50)</code> does the same job. It also includes both end values. You need <code>import random</code> at the top of the program.</p>`,
           watch: [
             '<code>RANDOM(0, 50)</code> gives 51 possible values, and there is no seat 0.',
             'In Python, <code>random.randrange(1, 50)</code> stops at <strong>49</strong>, so seat 50 would never be picked.',
-            'Remember to <em>store</em> the number with <code>SET seatNum TO …</code>. Just writing <code>RANDOM(1, 50)</code> on its own does not store it.'
+            'Remember to <em>store</em> the number with <code>SET seatNum TO …</code>. Just writing <code>RANDOM(1, 50)</code> on its own does not assign it to <code>seatNum</code>, so a mark is lost.'
           ],
           tryIt: 'seat'
         }
@@ -362,11 +362,12 @@ SEND finalCost TO DISPLAY</code></pre>`,
           marks: 3,
           answer: `<p>Any <strong>three</strong> of:</p>
             <ul>
-              <li>Check the username exists / matches an account</li>
-              <li>Check the password is correct for that username</li>
-              <li>Check (validate) the password is five characters long</li>
-              <li>Check the gift card number is valid (e.g. it exists and has not been used before)</li>
-              <li>Add the value of the gift card to the account balance (calculate the new balance)</li>
+              <li>Validate the password length is 5</li>
+              <li>Validate the gift card number</li>
+              <li>Check the username exists</li>
+              <li>Check the gift card number exists</li>
+              <li>Check the password entered is correct (matches the user’s password)</li>
+              <li>Calculate / update the new balance</li>
             </ul>`,
           markPoints: ['First correct process', 'Second correct process', 'Third correct process'],
           why: `<p>This is <strong>analysis</strong>: working out the <em>inputs</em>, <em>processes</em> and <em>outputs</em> of a program.</p>
@@ -403,10 +404,10 @@ SEND finalCost TO DISPLAY</code></pre>`,
             ]
           },
           markPoints: [
-            'Password is <strong>input</strong> before the loop is tested',
             'Uses a <strong>conditional loop</strong> (<code>WHILE</code> or <code>REPEAT … UNTIL</code>)',
-            'Correct condition using the <strong>length</strong> of the password and <strong>5</strong>',
-            '<strong>Error message</strong> and <strong>re-input</strong> of the password inside the loop'
+            'Correct loop condition: the loop only ends when the password <strong>length = 5</strong>',
+            'Password <strong>input</strong> assigned <strong>inside</strong> the loop',
+            '<strong>Error message</strong> inside the loop'
           ],
           why: `<p><strong>Input validation</strong> is a standard algorithm. It keeps asking until the data is acceptable. The pattern is always:</p>
             <ol>
@@ -414,7 +415,7 @@ SEND finalCost TO DISPLAY</code></pre>`,
               <li><strong>While</strong> the input is <em>invalid</em>: show an error and get the input again.</li>
             </ol>
             <p><code>LENGTH(password)</code> (<code>len()</code> in Python) is a predefined function that returns the number of characters in a string. The loop condition is the <strong>invalid</strong> case, so it uses <code>&lt;&gt;</code> (not equal to, written <code>!=</code> in Python).</p>`,
-          also: `<p>A <code>REPEAT … UNTIL</code> loop is also correct. Here the condition is the <strong>valid</strong> case:</p>
+          also: `<p>A <code>REPEAT … UNTIL</code> loop is also correct. Here the condition is the <strong>valid</strong> case, and the error message <strong>must</strong> sit inside a correct <code>IF</code>. Otherwise it would show even when the password is right:</p>
             <pre class="code-block"><code>REPEAT
   RECEIVE password FROM (STRING) KEYBOARD
   IF LENGTH(password) &lt;&gt; 5 THEN
@@ -422,7 +423,7 @@ SEND finalCost TO DISPLAY</code></pre>`,
   END IF
 UNTIL LENGTH(password) = 5</code></pre>`,
           watch: [
-            'Using <code>IF</code> instead of a loop only checks <strong>once</strong>. A second wrong password would get through.',
+            'Using <code>IF</code> instead of a loop only checks <strong>once</strong>, so a second wrong password would get through. With no loop, the most you can get is <strong>1 mark</strong> (for the error message with a correct condition).',
             'Writing the condition the wrong way round: <code>WHILE LENGTH(password) = 5</code> loops when the password is <em>valid</em>.',
             'Forgetting to receive the password again inside the loop creates an <strong>infinite loop</strong>.'
           ],
